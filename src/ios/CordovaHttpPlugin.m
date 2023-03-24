@@ -1,5 +1,4 @@
 #import "CordovaHttpPlugin.h"
-#import "CDVFile.h"
 #import "BinaryRequestSerializer.h"
 #import "BinaryResponseSerializer.h"
 #import "TextResponseSerializer.h"
@@ -602,7 +601,6 @@
             id filePlugin = [self.commandDelegate getCommandInstance:@"File"];
             NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
             [self handleSuccess:dictionary withResponse:(NSHTTPURLResponse*)task.response andData:nil];
-            [dictionary setObject:[filePlugin getDirectoryEntry:filePath isDirectory:NO] forKey:@"file"];
 
             CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:dictionary];
             [weakSelf.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
